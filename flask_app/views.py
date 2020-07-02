@@ -5,5 +5,5 @@ from flask import render_template, url_for, make_response, request, redirect, se
 
 @app.route("/")
 def index():
-    return "sex"
+    return render_template("public/index.html")
 
