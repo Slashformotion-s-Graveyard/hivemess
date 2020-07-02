@@ -7,6 +7,6 @@ from flask import render_template, url_for, make_response, request, redirect, se
 def index():
     return "hello johann et jean-robert"
 
-@app.route('/jadore/')
+@app.route('/jad')
 def sexe()
     return 'jojo adore le sex'
