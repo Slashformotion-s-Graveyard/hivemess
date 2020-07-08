@@ -16,9 +16,13 @@ def token():
     return render_template('public/nada.html', page_name="tokens")
 
 
-@app.route("/user")
+@app.route("/user/", methods=['GET', 'POST'])
 def user():
-    return render_template('public/user/user_form.html')
+    if request.method == 'POST':
+        username = request.form["username"]
+        return render_template("public/user/overview.html")
+    else:
+        return render_template('public/user/user_form.html')
 
 @app.route("/user/<string:username>")
 def user_infos(username):
