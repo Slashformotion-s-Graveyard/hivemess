@@ -19,3 +19,7 @@ def token():
 @app.route("/user")
 def user():
     return render_template('public/nada.html', page_name="user")
+
+@app.route("/user/<string:username>")
+def user_infos(username):
+    return "sss"

@@ -1,11 +1,56 @@
-{% extends 'bases/base_template.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- bulma CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+        <!-- custom CSS -->
+        <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+
+        <!-- font awesome -->
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <title>{% block tab_title %}{% endblock tab_title %}</title>
+    </head>
+
+    <body>
+        <!-- navbar START -->
+        <nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5" href="{{ url_for("index") }}">
+                    Hive Mess
+                </a>
+
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample"
+                    onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="{{ url_for("user") }}">User</a>
+
+                </div>
+                <div class="navbar-end">
+
+                    <!-- nothing here for the moment -->
+                </div>
+            </div>
 
 
-{% block navbar_end %}
-<a class="navbar-item" href="{{ url_for('user') }}">
-    User
-</a>
-<a class="navbar-item" href="{{ url_for('token') }}">
-    Tokens
-</a>
-{% endblock navbar_end %}
+
+
+
+
+        </nav>
+        <!-- navbar END -->
+        {% block main %}{% endblock main %}
+
+    </body>
+
+</html>
