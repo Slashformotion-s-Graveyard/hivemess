@@ -1,3 +1,7 @@
-{% extends 'public/templates/public_template.html' %
+{% extends 'public/templates/public_template.html' %}
+{% import 'macros/test_macro.html' as tem %}
+{% block tab_title %}{{ username }} - Overview{% endblock tab_title %}
 
-{% block tab_title %}{% endblock tab_title %}
+{% block main %}
+    {{ tem.get_hero(title="Overview page", username=username) }}
+{% endblock main %}

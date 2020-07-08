@@ -20,7 +20,7 @@ def token():
 def user():
     if request.method == 'POST':
         username = request.form["username"]
-        return render_template("public/user/overview.html")
+        return render_template("public/user/overview.html", username=username)
     else:
         return render_template('public/user/user_form.html')
 

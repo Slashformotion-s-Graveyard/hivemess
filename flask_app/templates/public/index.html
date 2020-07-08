@@ -1,7 +1,8 @@
 {% extends 'public/templates/public_template.html' %}
+{% import 'macros/test_macro.html' as tem %}
 
 {% block tab_name %}Welcome to the my hive mess{% endblock tab_name %}
 
 {% block main %}
-    nqsdohnsougfokjqusf
+    {{ tem.get_hero(title="Start Page - Website in construction") }}
 {% endblock main %}

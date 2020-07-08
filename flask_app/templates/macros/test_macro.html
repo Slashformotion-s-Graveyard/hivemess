@@ -1,0 +1,32 @@
+{% macro get_hero(title="") %}
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{ title.title() }}
+            </h1>
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th>Key</th>
+                        <th></th>
+                        <th>Value</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in kwargs.items() %}
+                    <tr>
+                        <th>{{key}}</th>
+                        <th>--></th>
+                        <th>{{value}}</th>  
+                    </tr>    
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endmacro %}
