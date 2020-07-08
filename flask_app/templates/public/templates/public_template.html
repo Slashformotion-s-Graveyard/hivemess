@@ -14,13 +14,13 @@
         <title>{% block tab_title %}{% endblock tab_title %}</title>
     </head>
 
-    <body>
+    <body class="has-navbar-fixed-top">
         <!-- navbar START -->
-        <nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item is-size-5" href="{{ url_for("index") }}">
-                    Hive Mess
-                </a>
+                <div class="navbar-item ">
+                    <a class="button is-white is-rounded is-outlined" href="{{ url_for("index") }}">Hive Mess</a>
+                </div>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample"
@@ -33,7 +33,12 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="{{ url_for("user") }}">User</a>
+                    <a class="navbar-item" href="{{ url_for("user") }}">
+                        User
+                    </a>
+                    <a class="navbar-item" href="{{ url_for("token") }}">
+                        Tokens
+                    </a>
 
                 </div>
                 <div class="navbar-end">

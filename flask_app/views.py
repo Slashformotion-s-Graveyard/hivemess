@@ -11,14 +11,14 @@ def index():
     return render_template("public/index.html")
 
 
-@app.route("/token")
+@app.route("/tokens")
 def token():
-    return render_template('public/nada.html', page_name="token")
+    return render_template('public/nada.html', page_name="tokens")
 
 
 @app.route("/user")
 def user():
-    return render_template('public/nada.html', page_name="user")
+    return render_template('public/user/user_form.html')
 
 @app.route("/user/<string:username>")
 def user_infos(username):
