@@ -1,0 +1,11 @@
+{% extends 'bases/base_template.html' %}
+
+
+{% block navbar_end %}
+<a class="navbar-item" href="{{ url_for('user') }}">
+    User
+</a>
+<a class="navbar-item" href="{{ url_for('token') }}">
+    Tokens
+</a>
+{% endblock navbar_end %}

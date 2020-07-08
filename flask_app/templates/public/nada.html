@@ -1,0 +1,15 @@
+{% extends 'public/templates/public_template.html' %}
+
+{% block tab_title %}{{ page_name }}{% endblock tab_title %}
+
+
+{% block main %}
+<hr>
+<div class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="is-size-1">page: {{ page_name }}</h1>
+        </div>
+    </div>
+</div>
+{% endblock main %}
