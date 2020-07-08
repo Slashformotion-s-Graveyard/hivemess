@@ -3,20 +3,23 @@
 {% block main %}
 <section class="section">
     <div class="columns">
-        <div class="column">
-            
-            <div class="field">
-                <label class="label">Hive username</label>
+        <div class="column  my-5 mx-5">
+            <form action="{{ url_for('user') }}" method="post">
+                <div class="field">
+                    <label class="label is-size-3">
+                        Hive username   
+                    </label>
                     <div class="control">
-                    <input class="input is-primary" type="text" placeholder="Primary input">
+                        <input class="input is-primary" name='username' type="text" placeholder="Your Hive Username">
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <button class="button is-primary">Let's go, Baby!</button>
-            </div>
+                <div class="field">
+                    <button type="submit" class="button is-primary">Let's go, Baby!</button>
+                </div>
+            </form>
 
         </div>
     </div>
 </section>
-    {% endblock main %}
+{% endblock main %}
