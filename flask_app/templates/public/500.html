@@ -1,0 +1,20 @@
+{% extends 'public/templates/public_template.html' %}
+
+{% block tab_title %}Page not Found{% endblock tab_title %}
+
+
+{% block main %}
+<section class="section">
+    <div class="container my-3 has-text-centered">
+        <h1 class="title is-size-1">500: Internal server error</h1>
+        <p class="subtitle"><strong>Don't worry it's normal,</strong> the server this website is running of is not very powerfull. <br>
+        Just click on the button below.</p>
+        <hr>
+        <a href="{{ url_for('index' )}}" class='button is-danger is-rounded is-large'>Go back to the matrix! </a>
+    </div>
+        
+
+           
+</section>
+
+{% endblock main %}

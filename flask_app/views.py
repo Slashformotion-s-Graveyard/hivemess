@@ -8,6 +8,11 @@ def error_handler_404(error):
     # print(error)
     return render_template("public/404.html", error=error)
 
+@app.errorhandler(500)
+def error_handler_500(error):
+    # print(error)
+    return render_template("public/500.html", error=error)
+
 @app.route("/")
 def index():
     return render_template("public/index.html")
@@ -59,7 +64,7 @@ def user_infos(username):
 
             }
 
-            return render_template("public/user/overview.html", **context)
+            return render_template("public/user/overview_user.html", **context)
         else:
             session['wrong_username'] = username
             return redirect(url_for('user'))
