@@ -4,6 +4,14 @@
 <section class="section">
     <div class="columns">
         <div class="column  my-5 mx-5">
+            
+            {% if wrong_username != False %}
+                <article class="notification is-{{ state }} has-text-centered">
+                    <button class="delete"></button>
+                    The account <span class="tag is-rounded">{{ last_username }}</span> doesn't exists, try <a href="{{ url_for('user_infos', username='slashformotion') }}"><span class="tag is-link is-rounded is-light">slashformotion</span></a> instead !
+                </article>
+            
+            {% endif %}
             <form action="{{ url_for('user') }}" method="post">
                 <div class="field">
                     <label class="label is-size-3">
@@ -20,14 +28,6 @@
             </form>
 
         </div>
-        {% if wrong_username != False %}
-        <div class="column">
-            <article class="notification is-{{ state }} has-text-centered">
-                <button class="delete"></button>
-                The account <span class="tag is-rounded">{{ last_username }}</span> doesn't exists, try <span class="tag is-rounded">slashformotion</span> instead !
-            </article>
-        </div>
-        {% endif %}
     </div>
 </section>
 {% endblock main %}
