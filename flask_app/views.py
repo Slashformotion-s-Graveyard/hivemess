@@ -12,7 +12,7 @@ def index():
 
 
 @app.route("/tokens")
-def token():
+def tokens():
     return render_template('public/nada.html', page_name="tokens")
 
 
@@ -20,10 +20,10 @@ def token():
 def user():
     if request.method == 'POST':
         username = request.form["username"]
-        return render_template("public/user/overview.html", username=username)
+        return redirect(url_for("user_infos", username=username))
     else:
         return render_template('public/user/user_form.html')
 
 @app.route("/user/<string:username>")
 def user_infos(username):
-    return "sss"
+    return render_template("public/user/overview.html", username=username)

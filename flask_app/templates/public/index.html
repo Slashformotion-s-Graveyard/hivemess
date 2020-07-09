@@ -1,8 +1,103 @@
 {% extends 'public/templates/public_template.html' %}
-{% import 'macros/test_macro.html' as tem %}
+<!-- {% import 'macros/test_macro.html' as tem %} -->
 
 {% block tab_name %}Welcome to the my hive mess{% endblock tab_name %}
 
+
+
+
+
 {% block main %}
-    {{ tem.get_hero(title="Start Page - Website in construction") }}
+<section class="section  has-text-centered notification" id="sec_title">
+    <h2 class="title is-2 mb-5">
+        Welcome to the Hive Mess - The messiest place for Hive users !
+    </h2>
+    <p class="subtitle">This website is a playground for me, to experiment ideas related to the Hive ecosystem. I will
+        implement differents features overtime. If you have a suggestion, please create an issue <strong><a
+                target="_blank" href="https://github.com/slashformotion/hivemess">here</a></strong> . <br>
+        Built with
+        <span class="icon is-small">
+            <ion-icon name="heart"></ion-icon>
+        </span>
+        by <a target="_blank" href="https://peakd.com/@slashformotion">@slashformotion.</a></p>
+</section>
+<hr>
+<div class="hero is-dark ">
+    <div class="hero-body">
+        <h3 class="title is-2">
+            Features :
+        </h3>
+    </div>
+</div>
+
+<section class="section" id="sec_content">
+
+    <div class="tiles is-ancestor ">
+
+        <div class="tile is-parent ">
+            <!-- MEDIA FEATURE: USER -->
+            <article class="tile is-child box ">
+                <div class="content">
+                    <h1 class="title is-3">The incredible user panel</h1>
+                    <div class="content">
+                        <p class="subtitle">You will find in this pannel every info you need about a user on Hive.</p>
+                        <div class="container">
+                            <p class="subtitle">If you don't know shit about hive: <a target='_blank'
+                                    href="https://signup.hive.io/" class="button is-small is-light">here you go</a></p>
+                        </div>
+                        <hr>
+                        <nav class="level">
+                            <div class="level-left">
+                                <!-- nothing -->
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <a href="{{ url_for("user") }}"  class="button is-dark">
+                                        User Panel
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+
+                    </div>
+
+                </div>
+
+            </article>
+            <article class="tile is-child box">
+                <div class="content">
+                    <h1 class="title is-3">The amazing tokens panel</h1>
+                    <div class="content">
+                        <p class="subtitle">This amazing panel will allow your beautiful person to discover relevent
+                            information about tokens on the Hive Blockchain. <br>
+                            You may also find usefull info on others cryptocurrency.
+                        </p>
+                        <hr>
+                        
+                        <nav class="level">
+                            <div class="level-left">
+                                <!-- nothing -->
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <a href="{{ url_for("tokens") }}"  class="button is-dark">
+                                        Tokens Panel
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+
+    </div>
+
+
+
+    </div>
+
+</section>
 {% endblock main %}

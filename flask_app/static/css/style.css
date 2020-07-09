@@ -3,3 +3,15 @@
     justify-content: center; /* vertical centering  */
     align-self: center; /* horizontal centering  */
 }
+
+/* icon classes for ionicons */
+
+.icon-icon {
+    font-size: 256px;
+    /* display: inline-block; */
+}
+
+.footer-custom {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}

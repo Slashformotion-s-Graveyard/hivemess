@@ -11,15 +11,23 @@
 
         <!-- font awesome -->
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+
         <title>{% block tab_title %}{% endblock tab_title %}</title>
     </head>
 
     <body class="has-navbar-fixed-top">
         <!-- navbar START -->
-        <nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-dark is-fixed-top py-2 has-background-black-ter has-text-white-bis" role="navigation"
+            aria-label="main navigation">
             <div class="navbar-brand">
                 <div class="navbar-item ">
-                    <a class="button is-white is-rounded is-outlined" href="{{ url_for("index") }}">Hive Mess</a>
+                    <a class="button is-white is-rounded is-outlined" href="{{ url_for("index") }}">
+                        <span class="icon is-small mr-2">
+                            <ion-icon style="font-size: 15px;" name="home"></ion-icon>
+                        </span>
+                        Hive Mess</a>
                 </div>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -36,7 +44,7 @@
                     <a class="navbar-item" href="{{ url_for("user") }}">
                         User
                     </a>
-                    <a class="navbar-item" href="{{ url_for("token") }}">
+                    <a class="navbar-item" href="{{ url_for("tokens") }}">
                         Tokens
                     </a>
 
@@ -54,8 +62,40 @@
 
         </nav>
         <!-- navbar END -->
-        {% block main %}{% endblock main %}
+        <div class="section" style="padding-right: 5%; padding-left: 5%;">
 
+            {% block main %}{% endblock main %}
+        </div>
+
+        <footer class="footer has-text-centered has-background-white-ter footer-custom">
+            <div class="content">
+                <div class="field">
+                    <div class="control">
+                        <p>
+                            This website is always in development, please report any bugs :
+                            <a href="https://github.com/slashformotion/hivemess" target="_blank"
+                                class="button is-small">
+                                <span class="icon is-small">
+                                    <ion-icon style="font-size: 21px;" name='logo-github'></ion-icon>
+                                </span>
+                            </a>.
+                            Developped and maintained by :
+                            <a href="https://peakd.com/@slashformotion" target="_blank" class='button is-small'>
+                                <strong>
+                                    @slashformotion
+                                </strong>
+                                <img class="ml-1" src="{{ url_for("static", filename="img/logo_hive_dark.png") }}" alt="Hive Logo" width="20">
+                            </a>
+                        </p>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     </body>
 
 </html>
