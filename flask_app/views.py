@@ -1,5 +1,7 @@
 from flask_app import app
 from flask import render_template, url_for, make_response, request, redirect, session
+from .hive_db.users import Current_HiveUserDB
+from .hive_db.users.user import account_exists
 
 @app.errorhandler(404)
 def error_handler_404(error):
@@ -20,10 +22,45 @@ def tokens():
 def user():
     if request.method == 'POST':
         username = request.form["username"]
-        return redirect(url_for("user_infos", username=username))
+        if account_exists(username):
+            return redirect(url_for("user_infos", username=username))
+        else:
+            context_user_form = {
+                "wrong_username": True,
+                "state": "warning",
+                "last_username": username
+            }
+            return render_template('public/user/user_form.html', **context_user_form)
     else:
-        return render_template('public/user/user_form.html')
+        if "wrong_username" in session.keys():
+            context_user_form = {
+                    "wrong_username": True,
+                    "state": "warning",
+                    "last_username": session.get('wrong_username', 'null')
+                }
+            session.pop('wrong_username')
+        else:
+            context_user_form = {
+                    "wrong_username": False,
+                    "state": False,
+                    "last_username": "null"
+                }
+        return render_template('public/user/user_form.html', **context_user_form)
 
 @app.route("/user/<string:username>")
 def user_infos(username):
-    return render_template("public/user/overview.html", username=username)
+    if not 'username' in session.keys() or session['username'] != username:
+        if account_exists(username):
+            session['username'] = username
+            session['user_data'] = Current_HiveUserDB.get_user(username)
+        
+            context = {
+            'username': username
+
+            }
+
+            return render_template("public/user/overview.html", **context)
+        else:
+            session['wrong_username'] = username
+            return redirect(url_for('user'))
+            

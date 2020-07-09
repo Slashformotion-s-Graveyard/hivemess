@@ -1,7 +1,10 @@
-from os import environ
+
+import secrets
+
 class Config(object):
     DEBUG = False
     TESTING = False
+    SECRET_KEY= str(secrets.token_urlsafe(1024))
     
 
     SESSION_COOKIE_SECURE = True

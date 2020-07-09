@@ -20,6 +20,32 @@
             </form>
 
         </div>
+        {% if wrong_username != False %}
+        <div class="column">
+            <article class="notification is-{{ state }} has-text-centered">
+                <button class="delete"></button>
+                The account <span class="tag is-rounded">{{ last_username }}</span> doesn't exists, try <span class="tag is-rounded">slashformotion</span> instead !
+            </article>
+        </div>
+        {% endif %}
     </div>
 </section>
 {% endblock main %}
+
+
+
+
+{% if wrong_username != False %}
+{% block script %}
+<script>document.addEventListener('DOMContentLoaded', () => {
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      $notification = $delete.parentNode;
+  
+      $delete.addEventListener('click', () => {
+        $notification.parentNode.removeChild($notification);
+      });
+    });
+  });
+</script>
+{% endblock script %}
+{% endif %}

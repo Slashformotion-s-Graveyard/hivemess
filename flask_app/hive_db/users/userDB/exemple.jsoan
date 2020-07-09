@@ -1,0 +1,39 @@
+{
+    "balances": {
+        "available": {
+            "HIVE": 0.522,
+            "HBD": 0.734,
+            "VESTS": 61484.036909
+        },
+        "savings": {
+            "HIVE": 0.0,
+            "HBD": 0.0
+        },
+        "rewards": {
+            "HIVE": 0.0,
+            "HBD": 0.01,
+            "VESTS": 98.984717
+        },
+        "total": {
+            "HIVE": 0.522,
+            "HBD": 0.744,
+            "VESTS": 61583.021626
+        }
+    },
+    "voting_power": 98.01,
+    "reputation": 50.74703423017304,
+    "name": "slashformotion",
+    "profile": {
+        "profile_image": "https://cdn.pixabay.com/photo/2015/06/08/15/11/camera-801924_960_720.jpg",
+        "cover_image": "https://dtxu61vdboi82.cloudfront.net/2018-01-01/ebb5aec4-a67c-4838-aba4-9aa7fd66ae02.jpeg",
+        "name": "Slashformotion",
+        "about": "Compte Principal : @theophile.roos ",
+        "location": "France",
+        "website": "https://alpha.steepshot.io/@slashformotion"
+    },
+    "vote_value": 0.0004230154517398428,
+    "complete_recharge_vote_time_str": "2:23:10",
+    "downvoting_power": 100.0,
+    "__signature__": "JPdcMsgPCIeEazKv58pEsvuXUllExxuX2d4I60b60uhwHO7wb2nx4QO9Ug79CZkP5KepPf9ULQhTEQz2qmUuhQnPh35Pd2sFnSdcVFBP799OD6BuDxIjnDfm1GN57ut9nnFkcmlQyAD33BZLOSXrYV5XUxOXuNwsZ302OwGIXMtvLnDaytKpypv7bNf2DVuCbwnuI5BN1pRIpoPsXrutk8SsxNj3b4SpFAhNbIJt94rjHXRLAqI6Azv318JVS368QHOtOClmd3pfO8UnGU69QoqTFqg5VkM1D4XDAF9DgCfhhJLTBFGCPIv2FVKHttF8eLvZG4UCpQflHgIYJDmT85KNSZheE7ABOKbl6hrpqYwrqKIPTk7roQoNlgvC3BVxPDGDWArOfmL4xVMP",
+    "__date__": "23:05 09,July,2020"
+}
