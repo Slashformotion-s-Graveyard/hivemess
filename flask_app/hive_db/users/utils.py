@@ -3,7 +3,7 @@ import datetime as det
 def get_now():
     return det.datetime.now()
 
-def get_now_minus_timedelta(days=0, mins=0, hours=0):
+def get_now_minus_timedelta(days=7, mins=0, hours=0):
     return get_now() - det.timedelta(days=days, minutes=mins, hours=hours)
 
 
