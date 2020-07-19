@@ -3,5 +3,95 @@
 {% block tab_title %}{{ username }} - Overview{% endblock tab_title %}
 
 {% block main %}
-    {{ tem.get_hero(title="Overview page", username=username) }}
+<div class="section pb-1">
+    <div class="level mb-1 ">
+        <div class="level-left">
+
+            <div class="level-item">
+                <img src="https://images.hive.blog/u/{{ username }}/avatar/medium" alt="PP">
+
+            </div>
+            <div class="level-item ">
+                <div>
+                    <p class='title'>
+                        @{{ username }}
+                    </p>
+                    <p class='heading'>
+                        <span class="icon is-small">
+                            <ion-icon name="location-sharp"></ion-icon>
+                        </span>
+                        {{ user_data['profile']['location'] }}
+                    </p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="level-item"></div>
+
+        <div class="level-right">
+            <div class="level-item">
+
+                <div class="buttons has-addons">
+                    <a href="https://peakd.com/@{{ username }}" target='_blank'
+                        class='button is-rounded is-dark'>Peakd</a>
+                    <a href="https://hive.blog/@{{ username }}" target='_blank'
+                        class='button is-rounded is-danger'>Hive.blog</a>
+                    <a href="https://d.buzz/@{{ username }}" target='_blank' class='button is-rounded is-info'>Dbuzz</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="level">
+        <div class="level-right">
+            <div class="level-item">
+                <h1 class='subtitle'>
+                    About: {{ user_data['profile']['about'] }}
+                </h1>
+            </div>
+        </div>
+        <div class="level-left">
+            <div class="level-item">
+                <a href="{{ user_data['profile']['website'] }}"
+                    class='button is-light '>{{ user_data['profile']['website'] }}</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="section pt-1">
+    <!-- tabs -->
+    <div class="tabs is-boxed is-toogle">
+        <ul>
+            <li class="is-active">
+                <a>
+                    <span>Overview</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span>Numbers</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span>other</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span>other</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end tabs -->
+
+</div>
+
 {% endblock main %}

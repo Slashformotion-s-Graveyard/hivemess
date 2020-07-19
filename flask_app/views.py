@@ -25,6 +25,7 @@ def tokens():
 
 @app.route("/user/", methods=['GET', 'POST'])
 def user():
+    print("user")
     if request.method == 'POST':
         username = request.form["username"]
         if account_exists(username):
@@ -50,22 +51,30 @@ def user():
                     "state": False,
                     "last_username": "null"
                 }
+
         return render_template('public/user/user_form.html', **context_user_form)
 
 @app.route("/user/<string:username>")
 def user_infos(username):
+    print("info")
     if not 'username' in session.keys() or session['username'] != username:
         if account_exists(username):
             session['username'] = username
             session['user_data'] = Current_HiveUserDB.get_user(username)
-        
-            context = {
-            'username': username
 
+            context = {
+            'username': username,
+            'user_data': session.get('user_data')
             }
 
             return render_template("public/user/overview_user.html", **context)
         else:
             session['wrong_username'] = username
+
             return redirect(url_for('user'))
-            
+    else:
+        context = {
+            'username': username,
+            'user_data': session.get('user_data')
+            }
+        return render_template("public/user/overview_user.html", **context)
