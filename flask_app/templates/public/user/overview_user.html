@@ -64,34 +64,97 @@
     </div>
 </div>
 
-<div class="section pt-1">
+<div id="user_content" class="section pt-1">
     <!-- tabs -->
     <div class="tabs is-boxed is-toogle">
         <ul>
-            <li class="is-active">
+            <li tab-target="overview" class="is-active">
                 <a>
                     <span>Overview</span>
                 </a>
             </li>
-            <li>
+            <li tab-target="numbers">
                 <a>
                     <span>Numbers</span>
                 </a>
             </li>
-            <li>
+            <li tab-target="charts">
                 <a>
-                    <span>other</span>
+                    <span>Charts</span>
                 </a>
             </li>
-            <li>
+            <li tab-target="others">
                 <a>
-                    <span>other</span>
+                    <span>others</span>
                 </a>
             </li>
         </ul>
     </div>
     <!-- end tabs -->
+    <div class="content-tabs">
+
+        <div tab-content='overview' class='is-active'>
+            OverviewOverviewOverview
+        </div>
+
+        <div tab-content='numbers'>
+            NumbersNumbersNumbersNumbers
+        </div>
+
+        <div tab-content='charts'>
+            ChartsChartsChartsCharts
+        </div>
+
+        <div tab-content='others'>
+            othersothersothersothers
+        </div>
+
+    </div>
 
 </div>
 
 {% endblock main %}
+
+{% block script %}
+
+<script>
+const TABS = document.querySelectorAll("[tab-target]");
+const CONTENT = document.querySelectorAll('[tab-content]');
+const ACTIVE_CLASS = 'is-active';
+
+function initTabs() {
+    TABS.forEach((tab) => {
+      tab.addEventListener('click', (e) => {
+        let selected = tab.getAttribute('tab-target');
+        updateActiveTab(tab);
+        updateActiveContent(selected);
+      })
+    })
+}
+
+function updateActiveTab(selected) {
+  TABS.forEach((tab) => {
+    if (tab && tab.classList.contains(ACTIVE_CLASS)) {
+      tab.classList.remove(ACTIVE_CLASS);
+    }
+  });
+  selected.classList.add(ACTIVE_CLASS);
+}
+
+function updateActiveContent(selected) {
+  CONTENT.forEach((item) => {
+    if (item && item.classList.contains(ACTIVE_CLASS)) {
+      item.classList.remove(ACTIVE_CLASS);
+    }
+    let data = item.getAttribute('tab-content');
+    if (data === selected) {
+      item.classList.add(ACTIVE_CLASS);
+    }
+  });
+}
+
+initTabs();
+
+</script>
+
+{% endblock script %}
