@@ -22,6 +22,9 @@
                         </span>
                         {{ user_data['profile']['location'] }}
                     </p>
+                    <p class="heading">
+                        rep: {{ user_data['reputation']|round(2) }}
+                    </p>
                 </div>
             </div>
 
@@ -66,7 +69,7 @@
 
 <div id="user_content" class="section pt-1">
     <!-- tabs -->
-    <div class="tabs is-boxed is-toogle">
+    <div class="tabs is-centered is-boxed ">
         <ul>
             <li tab-target="overview" class="is-active">
                 <a>
@@ -94,8 +97,63 @@
     <div class="content-tabs">
 
         <div tab-content='overview' class='is-active'>
-            OverviewOverviewOverview
+            <!-- START TAB CONTENT OVERVIEW -->
+            <div class="tile is-ancestor">
+                <div class="tile is-parent ">
+
+                    <div class="tile is-child box has-text-centered">
+                        <h1 class='title'>Balances</h1>
+                        <hr>
+                        <div class="level">
+                            <div class="level-item">
+                                <div class="div">
+                                    <p class='title'>
+                                        {{ user_data.get('balances').get('available').get('HIVE') }}
+                                    </p>
+                                    <p class='heading'>HIVE</p>
+                                </div>
+                            </div>
+                            
+
+                            <div class="level-item">
+                                <div class="div">
+                                    <p class='title'>
+                                        {{ user_data.get('balances').get('available').get('HBD') }}
+                                    </p>
+                                    <p class='heading'>HBD</p>
+                                </div>
+                            </div>
+
+                            <div class="level-item">
+                                <div class="div">
+                                    <p class='title'>
+                                        {{ user_data.get('balances').get('available').get('VESTS') }}
+                                    </p>
+                                    <p class='heading'>VESTS</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile is-child box has-text-centered">
+                        <h1 class='title'>Ressources</h1>
+                        <hr>
+                        <p class="heading">Voting Power</p>
+                        <progress class="progress is-info" value="{{ user_data.get('voting_power') }}"
+                            max="100">{{ user_data.get('voting_power') }}%</progress>
+                        <p class="heading">Downvoting Power</p>
+                        <progress class="progress is-danger" value="{{ user_data.get('downvoting_power') }}"
+                            max="100">{{ user_data.get('downvoting_power') }}%</progress>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- END TAB CONTENT OVERVIEW -->
+
         </div>
+
 
         <div tab-content='numbers'>
             NumbersNumbersNumbersNumbers
@@ -118,42 +176,42 @@
 {% block script %}
 
 <script>
-const TABS = document.querySelectorAll("[tab-target]");
-const CONTENT = document.querySelectorAll('[tab-content]');
-const ACTIVE_CLASS = 'is-active';
+    const TABS = document.querySelectorAll("[tab-target]");
+    const CONTENT = document.querySelectorAll('[tab-content]');
+    const ACTIVE_CLASS = 'is-active';
 
-function initTabs() {
-    TABS.forEach((tab) => {
-      tab.addEventListener('click', (e) => {
-        let selected = tab.getAttribute('tab-target');
-        updateActiveTab(tab);
-        updateActiveContent(selected);
-      })
-    })
-}
-
-function updateActiveTab(selected) {
-  TABS.forEach((tab) => {
-    if (tab && tab.classList.contains(ACTIVE_CLASS)) {
-      tab.classList.remove(ACTIVE_CLASS);
+    function initTabs() {
+        TABS.forEach((tab) => {
+            tab.addEventListener('click', (e) => {
+                let selected = tab.getAttribute('tab-target');
+                updateActiveTab(tab);
+                updateActiveContent(selected);
+            })
+        })
     }
-  });
-  selected.classList.add(ACTIVE_CLASS);
-}
 
-function updateActiveContent(selected) {
-  CONTENT.forEach((item) => {
-    if (item && item.classList.contains(ACTIVE_CLASS)) {
-      item.classList.remove(ACTIVE_CLASS);
+    function updateActiveTab(selected) {
+        TABS.forEach((tab) => {
+            if (tab && tab.classList.contains(ACTIVE_CLASS)) {
+                tab.classList.remove(ACTIVE_CLASS);
+            }
+        });
+        selected.classList.add(ACTIVE_CLASS);
     }
-    let data = item.getAttribute('tab-content');
-    if (data === selected) {
-      item.classList.add(ACTIVE_CLASS);
-    }
-  });
-}
 
-initTabs();
+    function updateActiveContent(selected) {
+        CONTENT.forEach((item) => {
+            if (item && item.classList.contains(ACTIVE_CLASS)) {
+                item.classList.remove(ACTIVE_CLASS);
+            }
+            let data = item.getAttribute('tab-content');
+            if (data === selected) {
+                item.classList.add(ACTIVE_CLASS);
+            }
+        });
+    }
+
+    initTabs();
 
 </script>
 
