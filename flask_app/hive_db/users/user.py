@@ -61,6 +61,10 @@ class HiveAccount(object):
                   "voting_power": self.voting_power,
                   "complete_recharge_vote_time_str": self.complete_recharge_vote_time_str,
                   "downvoting_power": self.downvoting_power,
+                  "curation_stats": self.curation_stats,
+                  "creator": self.creator
+
+                  
                   }
         return report
 
@@ -140,6 +144,20 @@ class HiveAccount(object):
         """
         return self.acc.get_recharge_time_str(voting_power_goal=100)
 
+    @property
+    def curation_stats(self):
+        stats = self.acc.curation_stats()
+        return stats
+
+    @property
+    def creator(self):
+        creator = self.acc.get_creator()
+        if creator == None:
+            return 'none'
+        else:
+            return creator
+    
+    
 
 if __name__ == "__main__":
     from pprint import pprint
@@ -149,5 +167,7 @@ if __name__ == "__main__":
     
 
     print("Profile : ")
-    pprint(e.get_report())
+    pprint(e.curation_stats.get("avg"))
     print()
+    pprint(type(e.curation_stats.get("avg")))
+
