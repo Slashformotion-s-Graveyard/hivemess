@@ -16,25 +16,51 @@ def account_exists(username):
 class HiveAccount(object):
 
     """
-    {'balances': {'available': {'HBD': 0.071,
-                            'HIVE': 0.029,
-                            'VESTS': 216422.272937},
-              'rewards': {'HBD': 0.0, 'HIVE': 0.0, 'VESTS': 0.0},
-              'savings': {'HBD': 0.0, 'HIVE': 0.0},
-              'total': {'HBD': 0.071, 'HIVE': 0.029, 'VESTS': 216422.272937}},
-    'complete_recharge_vote_time_str': '1:19:33',
-    'downvoting_power': 100.0,
-    'name': 'theophile.roos',
-    'profile': {'about': "Arpenteur d'internet, je partage ce qui me passe sous "
-                        'le nez !',
-                'cover_image': 'https://dtphgwb5vjcez.cloudfront.net/optim/focus/news/10/10164/RED_WEAPON8K_01.jpg',
-                'location': 'France',
-                'name': 'Théophile Roos',
-                'profile_image': 'https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/DQmSd8u145jjJEoQRcWT1P2btDGq74X2kCiVUdE1MBzGupk_1680x8400',
-                'website': 'https://d.tube/#!/c/theophile.roos'},
-    'reputation': 53.403808184185685,
-    'vote_value': 0.0005071412028735301,
-    'voting_power': 98.89}
+    {
+        "balances": {
+            "available": {
+                "HIVE": 0.036,
+                "HBD": 0.0,
+                "VESTS": 76381.990195
+            },
+            "savings": {
+                "HIVE": 0.0,
+                "HBD": 0.0
+            },
+            "rewards": {
+                "HIVE": 0.0,
+                "HBD": 0.0,
+                "VESTS": 0.0
+            },
+            "total": {
+                "HIVE": 0.036,
+                "HBD": 0.0,
+                "VESTS": 76381.990195
+            }
+        },
+        "voting_power": 99.43,
+        "reputation": 51.92520108034113,
+        "name": "slashformotion",
+        "profile": {
+            "profile_image": "https://cdn.pixabay.com/photo/2015/06/08/15/11/camera-801924_960_720.jpg",
+            "cover_image": "https://dtxu61vdboi82.cloudfront.net/2018-01-01/ebb5aec4-a67c-4838-aba4-9aa7fd66ae02.jpeg",
+            "name": "Slashformotion",
+            "about": "Compte Principal : @theophile.roos ",
+            "location": "France",
+            "website": "https://alpha.steepshot.io/@slashformotion"
+        },
+        "vote_value": 0.00012391208202342324,
+        "complete_recharge_vote_time_str": "0:41:00",
+        "downvoting_power": 100.0,
+        "curation_stats": {
+            "24hr": 0.0,
+            "7d": 0.005001926271379387,
+            "avg": 0.000714560895911341
+        },
+        "creator": "steem",
+        "__signature__": "JPdcMsgPCIeEazKv58pEsvuXUllExxuX2d4I60b60uhwHO7wb2nx4QO9Ug79CZkP5KepPf9ULQhTEQz2qmUuhQnPh35Pd2sFnSdcVFBP799OD6BuDxIjnDfm1GN57ut9nnFkcmlQyAD33BZLOSXrYV5XUxOXuNwsZ302OwGIXMtvLnDaytKpypv7bNf2DVuCbwnuI5BN1pRIpoPsXrutk8SsxNj3b4SpFAhNbIJt94rjHXRLAqI6Azv318JVS368QHOtOClmd3pfO8UnGU69QoqTFqg5VkM1D4XDAF9DgCfhhJLTBFGCPIv2FVKHttF8eLvZG4UCpQflHgIYJDmT85KNSZheE7ABOKbl6hrpqYwrqKIPTk7roQoNlgvC3BVxPDGDWArOfmL4xVMP",
+        "__date__": "14:44 23,July,2020"
+    }
     """
     def __init__(self, name, hive_instance=hive_instance):
         try:
@@ -62,8 +88,8 @@ class HiveAccount(object):
                   "complete_recharge_vote_time_str": self.complete_recharge_vote_time_str,
                   "downvoting_power": self.downvoting_power,
                   "curation_stats": self.curation_stats,
-                  "creator": self.creator
-
+                  "creator": self.creator,
+                  "RC_pct": self.RC_pct
                   
                   }
         return report
@@ -157,7 +183,17 @@ class HiveAccount(object):
         else:
             return creator
     
+    @property
+    def RC_pct(self):
+        return self.RC.get('current_mana_pct')
+
+    @property
+    def RC(self):
+        return self.acc.get_manabar()
+
     
+    # def get_comment_history(self):
+    #     return self.acc.
 
 if __name__ == "__main__":
     from pprint import pprint
