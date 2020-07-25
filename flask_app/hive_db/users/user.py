@@ -70,7 +70,7 @@ class HiveAccount(object):
             self.__exists = False
         else:
             self.__exists = True
-
+        
     def get_report(self):
         """
         return a full report on the account
@@ -89,7 +89,9 @@ class HiveAccount(object):
                   "downvoting_power": self.downvoting_power,
                   "curation_stats": self.curation_stats,
                   "creator": self.creator,
-                  "RC_pct": self.RC_pct
+                  "RC_pct": self.RC_pct,
+                  "comment_number": self.comment_number,
+                  "post_number": self.post_number
                   
                   }
         return report
@@ -192,8 +194,16 @@ class HiveAccount(object):
         return self.acc.get_manabar()
 
     
-    # def get_comment_history(self):
-    #     return self.acc.
+
+    @property
+    def post_number(self):
+        return len([c for c in self.acc.blog_history(reblogs=False) if c.is_main_post()])
+
+    @property
+    def comment_number(self):
+        return len([c for c in self.acc.comment_history()]) 
+
+
 
 if __name__ == "__main__":
     from pprint import pprint

@@ -32,7 +32,7 @@
 
         </div>
 
-        <div class="level-item"></div>
+
 
         <div class="level-right">
             <div class="level-item">
@@ -76,9 +76,9 @@
                     <span>Overview</span>
                 </a>
             </li>
-            <li tab-target="numbers">
+            <li tab-target="money">
                 <a>
-                    <span>Numbers</span>
+                    <span>Money</span>
                 </a>
             </li>
             <li tab-target="charts">
@@ -98,14 +98,15 @@
 
         <div tab-content='overview' class='is-active'>
             <!-- START TAB CONTENT OVERVIEW -->
-            <div class="tile is-ancestor">
-                <div class="tile is-parent ">
+            <div class="columns is-multiline">
+                <div class="column is-half">
+                    <!-- first column START -->
 
-                    <div class="tile is-child box has-text-centered">
+                    <div class="box has-text-centered">
                         <h1 class='title'>Balances</h1>
                         <hr>
                         <div class="level">
-                            <div class="level-item">
+                            <div class="level-item mr-2">
                                 <div class="div">
                                     <p class='title'>
                                         {{ user_data.get('balances').get('available').get('HIVE') }}
@@ -113,9 +114,9 @@
                                     <p class='heading'>HIVE</p>
                                 </div>
                             </div>
-                            
 
-                            <div class="level-item">
+                            
+                            <div class="level-item mr-2">
                                 <div class="div">
                                     <p class='title'>
                                         {{ user_data.get('balances').get('available').get('HBD') }}
@@ -124,7 +125,7 @@
                                 </div>
                             </div>
 
-                            <div class="level-item">
+                            <div class="level-item ">
                                 <div class="div">
                                     <p class='title'>
                                         {{ user_data.get('balances').get('available').get('VESTS') }}
@@ -135,17 +136,100 @@
                         </div>
                     </div>
 
-                    <div class="tile is-child box has-text-centered">
+                    <div class="box has-text-centered">
+                        <h1 class="title">
+                            Votes
+                        </h1>
+                        <hr>
+                        <div class="level">
+                            <div class="level-item">
+                                <div>
+                                    <p id='overview_Votes_votes_number' class="title">
+                                        -12
+                                    </p>
+                                    <p class="heading">
+                                        Votes
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="level-item">
+                                <div>
+                                    <p id="overview_Votes_selfvotes_number" class="title">
+                                        -23564156
+                                    </p>
+                                    <p class="heading">
+                                        Self-Vote
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- first column stop -->
+
+                </div>
+                <div class="column is-half">
+                    <!-- second column START -->
+                    <div class="box has-text-centered">
                         <h1 class='title'>Ressources</h1>
                         <hr>
-                        <p class="heading">Voting Power</p>
+
+                        <p class="heading">
+                            Voting Power:
+
+                            <span class="tag">
+                                {{ user_data.get('voting_power') }}%
+                            </span>
+                        </p>
                         <progress class="progress is-info" value="{{ user_data.get('voting_power') }}"
                             max="100">{{ user_data.get('voting_power') }}%</progress>
-                        <p class="heading">Downvoting Power</p>
+
+                        <p class="heading">
+                            Downvoting Power:
+                            <span class="tag">
+                                {{ user_data.get('downvoting_power') }}%
+                            </span>
+                        </p>
                         <progress class="progress is-danger" value="{{ user_data.get('downvoting_power') }}"
                             max="100">{{ user_data.get('downvoting_power') }}%</progress>
 
+                        <p class="heading">
+                            Ressources Credits
+                            <span class="tag">
+                                {{ user_data.get('RC_pct')|round(2) }}%
+                            </span>
+                        </p>
+                        <progress class="progress is-success" value="{{ user_data.get('RC_pct') }}"
+                            max="100">{{ user_data.get('RC_pct') }}%</progress>
+
                     </div>
+
+                    <div class="box has-text-centered">
+                        <h1 class="title">
+                            Posts
+                        </h1>
+                        <hr>
+                        <p class='heading'>
+
+                            Comments Number :
+                            <span id='overview_Posts_comments_number' class='tag '>
+                                {{ user_data.get('comment_number') }}
+                            </span>
+                        </p>
+                        <p class='heading'>
+
+                            Post Number :
+                            <span id='overview_Posts_posts_number' class='tag '>
+                                {{ user_data.get('post_number') }}
+                            </span>
+                        </p>
+                    </div>
+
+                    <!-- second column STOP -->
+
+                </div>
+                
+                <div class="column is-one-third">
+                    
                 </div>
             </div>
 
@@ -155,8 +239,8 @@
         </div>
 
 
-        <div tab-content='numbers'>
-            NumbersNumbersNumbersNumbers
+        <div tab-content='money'>
+            MoneyMoneyMoneyMoneyMoney
         </div>
 
         <div tab-content='charts'>
@@ -175,44 +259,6 @@
 
 {% block script %}
 
-<script>
-    const TABS = document.querySelectorAll("[tab-target]");
-    const CONTENT = document.querySelectorAll('[tab-content]');
-    const ACTIVE_CLASS = 'is-active';
-
-    function initTabs() {
-        TABS.forEach((tab) => {
-            tab.addEventListener('click', (e) => {
-                let selected = tab.getAttribute('tab-target');
-                updateActiveTab(tab);
-                updateActiveContent(selected);
-            })
-        })
-    }
-
-    function updateActiveTab(selected) {
-        TABS.forEach((tab) => {
-            if (tab && tab.classList.contains(ACTIVE_CLASS)) {
-                tab.classList.remove(ACTIVE_CLASS);
-            }
-        });
-        selected.classList.add(ACTIVE_CLASS);
-    }
-
-    function updateActiveContent(selected) {
-        CONTENT.forEach((item) => {
-            if (item && item.classList.contains(ACTIVE_CLASS)) {
-                item.classList.remove(ACTIVE_CLASS);
-            }
-            let data = item.getAttribute('tab-content');
-            if (data === selected) {
-                item.classList.add(ACTIVE_CLASS);
-            }
-        });
-    }
-
-    initTabs();
-
-</script>
+<script src="{{ url_for("static", filename="js/tabs.js") }}"></script>
 
 {% endblock script %}
