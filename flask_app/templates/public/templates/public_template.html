@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- bulma CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-        <!-- custom CSS -->
-        <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
 
-        <!-- font awesome -->
-        <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
+    <!-- font awesome -->
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
 
 
 
-        <title>{% block tab_title %}{% endblock tab_title %}</title>
-    </head>
+    <title>{% block tab_title %}{% endblock tab_title %}</title>
+</head>
 
-    <body class="has-navbar-fixed-top">
-        <!-- navbar START -->
-        <nav class="navbar is-dark is-fixed-top py-2 has-background-black-ter has-text-white-bis" role="navigation"
-            aria-label="main navigation">
-            <div class="navbar-brand">
-                <div class="navbar-item ">
-                    <a class="button is-white is-rounded is-outlined" href="{{ url_for("index") }}">
-                        <span class="icon is-small mr-2">
-                            <ion-icon style="font-size: 15px;" name="home"></ion-icon>
-                        </span>
-                        Hive Mess</a>
-                </div>
+<body class="has-navbar-fixed-top">
+    <!-- navbar START -->
+    <nav class="navbar is-dark is-fixed-top py-2 has-background-black-ter has-text-white-bis" role="navigation"
+        aria-label="main navigation">
+        <div class="navbar-brand">
+            <div class="navbar-item ">
+                <a class="button is-white is-rounded is-outlined" href="{{ url_for("index") }}">
+                    <span class="icon is-small mr-2">
+                        <ion-icon style="font-size: 15px;" name="home"></ion-icon>
+                    </span>
+                    Hive Mess</a>
+            </div>
 
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample"
-                    onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample"
+                onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{{ url_for("user") }}">
+                    User
                 </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="{{ url_for("user") }}">
-                        User
-                    </a>
-                    <a class="navbar-item" href="{{ url_for("tokens") }}">
-                        Tokens
-                    </a>
-
-                </div>
-                <div class="navbar-end">
-                    <hr class="navbar-divider">
-                    <div class="navbar-item">
-                        <a href="https://github.com/slashformotion/hivemess/issues/new" target="_blank" class="button is-success is-rounded ">Suggestion/Bug Report</a>
-                    </div>
-
-                    <!-- nothing here for the moment -->
-                </div>
-            </div>
-
-
-
-
-
-
-        </nav>
-        <!-- navbar END -->
-        <!-- <div class="section" style="padding-right: 5%; padding-left: 5%;"> -->
-
-            {% block main %}{% endblock main %}
-        <!-- </div> -->
-
-        <footer class="footer has-text-centered has-background-white-ter footer-custom">
-            <div class="content">
-                <div class="field">
-                    <div class="control">
-                        <p>
-                            This website is always in development, please report any bugs :
-                            <a href="https://github.com/slashformotion/hivemess" target="_blank"
-                                class="button is-small">
-                                <span class="icon is-small">
-                                    <ion-icon style="font-size: 21px;" name='logo-github'></ion-icon>
-                                </span>
-                            </a>.
-                            Developped and maintained by :
-                            <a href="https://peakd.com/@slashformotion" target="_blank" class='button is-small'>
-                                <strong>
-                                    @slashformotion
-                                </strong>
-                                <img class="ml-1" src="{{ url_for("static", filename="img/logo_hive_dark.png") }}" alt="Hive Logo" width="20">
-                            </a>
-                        </p>
-
-                    </div>
-                </div>
-
+                <a class="navbar-item" href="{{ url_for("tokens") }}">
+                    Tokens
+                </a>
 
             </div>
-        </footer>
-        {% block script %}
-            
-        {% endblock script %}
+            <div class="navbar-end">
+                <hr class="navbar-divider">
+                <div class="navbar-item">
+                    <a href="https://github.com/slashformotion/hivemess/issues/new" target="_blank"
+                        class="button is-success is-rounded ">Suggestion/Bug Report</a>
+                </div>
 
-        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    </body>
+                <!-- nothing here for the moment -->
+            </div>
+        </div>
+
+
+
+
+
+
+    </nav>
+    <!-- navbar END -->
+    <!-- <div class="section" style="padding-right: 5%; padding-left: 5%;"> -->
+
+    {% block main %}{% endblock main %}
+    <!-- </div> -->
+
+    <footer class="footer has-text-centered has-background-white-ter footer-custom">
+        <div class="content">
+            <div class="field">
+                <div class="control">
+                    <p>
+                        This website is always in development, please report any bugs :
+                        <a href="https://github.com/slashformotion/hivemess" target="_blank" class="button is-small">
+                            <span class="icon is-small">
+                                <ion-icon style="font-size: 21px;" name='logo-github'></ion-icon>
+                            </span>
+                        </a>.
+                        Developped and maintained by :
+                        <a href="https://peakd.com/@slashformotion" target="_blank" class='button is-small'>
+                            <strong>
+                                @slashformotion
+                            </strong>
+                            <img class="ml-1" src="{{ url_for("static", filename="img/logo_hive_dark.png") }}"
+                                alt="Hive Logo" width="20">
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+
+
+        </div>
+    </footer>
+    {% block script %}
+
+    {% endblock script %}
+
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+</body>
 
 </html>
